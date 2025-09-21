@@ -1,33 +1,30 @@
 import streamlit as st
 import pyrebase
-from streamlit_extras.switch_page_button import switch_page
 import requests
+from streamlit_extras.switch_page_button import switch_page  # if you use switch_page
 
-# --- Firebase Configuration ---
-# IMPORTANT: You must paste your own Firebase Web App configuration here.
+# --- Firebase config ---
 firebase_config = {
-  "apiKey": "AIzaSyD-yFZCZo4P9le0cKSSW4vxpZXCXbL-gKs",
-  "authDomain": "genai-472705.firebaseapp.com",
-  "projectId": "genai-472705",
-  "storageBucket": "genai-472705.firebasestorage.app",
-  "messagingSenderId": "763202871269",
-  "appId": "1:763202871269:web:24b017b2d6911bf703990c",
-  "databaseURL": ""
+    "apiKey": st.secrets["firebase"]["apiKey"],
+    "authDomain": st.secrets["firebase"]["authDomain"],
+    "databaseURL": st.secrets["firebase"]["databaseURL"],
+    "projectId": st.secrets["firebase"]["projectId"],
+    "storageBucket": st.secrets["firebase"]["storageBucket"],
+    "messagingSenderId": st.secrets["firebase"]["messagingSenderId"],
+    "appId": st.secrets["firebase"]["appId"]
 }
 
-# --- Backend URL ---
-# This should point to your running Flask server.
-BACKEND_URL = "http://127.0.0.1:5001"
-
 # --- Initialize Firebase ---
-# This setup is safe to run multiple times as Streamlit reruns the script.
 try:
     firebase = pyrebase.initialize_app(firebase_config)
     auth_client = firebase.auth()
-except Exception as e:
-    # This can happen if the app reruns and tries to re-initialize.
-    # We can safely ignore it in this context.
+except Exception:
     pass
+
+# --- Backend URL ---
+BACKEND_URL = "http://127.0.0.1:5001"  # replace with actual public URL
+
+
 
 # --- Page Setup ---
 st.set_page_config(layout="wide")
