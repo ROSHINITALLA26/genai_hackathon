@@ -5,13 +5,13 @@ from streamlit_extras.switch_page_button import switch_page  # if you use switch
 
 # --- Firebase config ---
 firebase_config = {
-    "apiKey": st.secrets["firebase"]["apiKey"],
-    "authDomain": st.secrets["firebase"]["authDomain"],
-    "databaseURL": st.secrets["firebase"]["databaseURL"],
-    "projectId": st.secrets["firebase"]["projectId"],
-    "storageBucket": st.secrets["firebase"]["storageBucket"],
-    "messagingSenderId": st.secrets["firebase"]["messagingSenderId"],
-    "appId": st.secrets["firebase"]["appId"]
+    "apiKey": st.secrets["firebase_config"]["apiKey"],
+    "authDomain": st.secrets["firebaseb_config"]["authDomain"],
+    "databaseURL": st.secrets["firebase_config"]["databaseURL"],
+    "projectId": st.secrets["firebase_config"]["projectId"],
+    "storageBucket": st.secrets["firebase_config"]["storageBucket"],
+    "messagingSenderId": st.secrets["firebase_config"]["messagingSenderId"],
+    "appId": st.secrets["firebase_config"]["appId"]
 }
 
 # --- Initialize Firebase ---
